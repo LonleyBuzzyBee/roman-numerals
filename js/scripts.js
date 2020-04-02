@@ -1,25 +1,33 @@
-// business logic
+// // business logic
+
 function myFunc(number) {
-  // var finalAnswer = [];
-  // var numFilter = [1,2,3,4,5,6,7,8,9];
-  // var singleNumber = number.split(""); 
-  
-  // // var numberPush = number.push(roman[])
 
-  // if (numFilter.includes(singleNumber[0])) {
-  //     finalAnswer.push()
+  var letter = number.split("");
+  console.log(letter);
+  var roman = ["I","V"]; //array
+  console.log(roman);
+  if(number <= 3){
+    letter = roman[0].repeat(number);
+    $(".result").text(letter);
 
-      //1,2,3
-      var result = "";
-      var one = "I";
-
-      if(number <= 3){
-        result = one.repeat(number)
-      }
-      console.log(result);
-    // return result;
-
+  }else if (number >= 3 ){
+    letter = roman[0].repeat(number-[1]);
+    $(".result").text(roman[1]+letter);
+  }
 }
+
+
+// 1   "I"  -add
+// 2   "II" -add
+// 3   "III"-add
+// 4   "IV" -subtract from new symbol
+// 5   "V"  -symbol
+// 6   "VI" -add
+// 7   "VII" -add
+// 8   "VIII" -add
+// 9   "IX" -subtract from new symbol
+// 10  "X"  -symbol
+
 
 
 
@@ -32,6 +40,6 @@ $(document).ready(function(){
     event.preventDefault();
     var numbersInput =$("input#user-input").val();
       myFunc(numbersInput);
-      $(".result").text(result);
+      // $(".result").text(myFunc(numbersInput));
   });
 });
