@@ -1,28 +1,40 @@
 // // business logic
 
   var outPut = [];
-function myFunc(number) {
+
+function myFunc(inputNumber) {
   
-  var roman = ["I","V","X"]; //array
+  var roman = ["I","V","X","L","C"]; //array
+  var numberArray = inputNumber.split("").map(function(number) {
+          return parseInt(number);
+          
+        }); 
+      console.log(numberArray);
+
+  // var stringNumber = parseInt(numberArray)
+  // '2123' = ???
+  // [2, 1, 2, 3]
+  // 2000 = ?
+  // 100 = ?
+  // 20 = ?
+  // 3 = ?
   
   // console.log(number);
 
-  
-    
-   
-  if (number % 10 == 0) {
+  if (numberArray % 100 == 0) {
+      numberArray.join("");
+      outPut.push(roman[4]);
+     
+  }else if (numberArray % 50 == 0 ) {
+    outPut.push(roman[3]);
+  }else if (numberArray % 10 == 0) {
     outPut.push(roman[2]);
-  
-  }else if (number % 10 == 1 || number % 10 == 2 || number % 10 == 3) {
-    // outPut.push(roman[2] + roman[0].repeat(parseInt(roman[0]).val(1)));
-    outPut.push(roman[2] + roman[0].repeat(number-10));
-  
-  }else if (number % 5 == 0 ){
+  }else if (numberArray % 5 == 0 ){
     outPut.push(roman[1]);
 
-  }else if(number % 1 == 0) {
+  }else if(numberArray % 1 == 0) {
     outPut.push(roman[0]);
-  
+    
   // }else {
     // outPut.push(roman[0].repeat(number));
   }
@@ -60,6 +72,7 @@ $(document).ready(function(){
     var numbersInput =$("input#user-input").val();
       myFunc(numbersInput);
       $(".result").text(outPut);
+      console.log($(".result").text(outPut));
   });
 });
 
