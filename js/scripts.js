@@ -1,36 +1,40 @@
+// // business logic
 
-function myFunc(number) {   //1-10
+  var outPut = [];
+function myFunc(number) {
   
-  var letter = number.split("");
-  console.log(letter);
   var roman = ["I","V","X"]; //array
   
+  // console.log(number);
 
-  if(number <= 3){
-    letter = roman[0].repeat(number);
-    $(".result").text(letter);
-  }else if (number == 4 ){
-    letter = roman[0].repeat(number-[3]); 
-    $(".result").text(letter+roman[1]);
-  } else if (number == 5) {
-    letter = roman[1];
-    $(".result").text(letter);
-    //1-5
-  } else if (number >= 5 && number < 9) {
-    letter = roman[1] + roman[0].repeat(number-[5]);
-    $(".result").text(letter);
-  } else if (number == 9 ){
-    letter = roman[0].repeat(number-[8]);
-    $(".result").text(letter+roman[2]);
-    // letter = roman[2];
-    // $(".result").text(roman[0]+letter);
-  }
-}
- function myFuncTwo (number){
-   var numOverTen = ""
+  
+    
    
-    $(".result").text(roman[2]+letter);
- }
+  if (number % 10 == 0) {
+    outPut.push(roman[2]);
+  
+  }else if (number % 10 == 1 || number % 10 == 2 || number % 10 == 3) {
+    // outPut.push(roman[2] + roman[0].repeat(parseInt(roman[0]).val(1)));
+    outPut.push(roman[2] + roman[0].repeat(number-10));
+  
+  }else if (number % 5 == 0 ){
+    outPut.push(roman[1]);
+
+  }else if(number % 1 == 0) {
+    outPut.push(roman[0]);
+  
+  // }else {
+    // outPut.push(roman[0].repeat(number));
+  }
+ 
+}
+
+// I = 1
+// V = 5
+// X = 10
+// L = 50
+// C = 100
+// D = 5000
 
 // 1   "I"  -add
 // 2   "II" -add
@@ -49,14 +53,13 @@ function myFunc(number) {   //1-10
 
 
 
-
 // user interface logic
 $(document).ready(function(){
   $("form#form-container").submit(function(event){
     event.preventDefault();
     var numbersInput =$("input#user-input").val();
       myFunc(numbersInput);
-      // $(".result").text(myFunc(numbersInput));
+      $(".result").text(outPut);
   });
 });
 
